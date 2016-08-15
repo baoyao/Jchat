@@ -1,0 +1,30 @@
+
+sun.audio.audioplayer jar
+Access restriction: The type AudioPlayer is not accessible due to restriction on required library /data/tools/jdk_new/jre/lib/rt.jar
+解决方案1： 
+
+Eclipse 默认把这些受访问限制的API设成了ERROR。 
+Windows -> Preferences -> Java -> Compiler -> Errors/Warnings -> 
+Deprecated and trstricted API -> Forbidden reference (access rules): -> change to warning 
+
+MyMessager2.0版本
+一、功能说明：
+1.采用了全新的界面风格
+2.实现了基本文字聊天功能
+3.实现了基本文件传送功能
+4.实现了发送窗口抖动的功能
+5.实现了语音聊天的功能
+
+二、存在的问题
+语音聊天存在bug，可以优化，预计将在2.1版本中优化
+===============================================
+
+MyMessager2.1版本更新说明
+1、修复了语音接收线程可能一直无法启动的bug；
+	（注：原因是：断开语音并再次请求语音且同意时，上一次的语音线程可能正阻塞住没有退出，
+				因此再次建立语音接收线程时会报端口被占用的错误）
+存在的bug：
+由于没有采用线程同步，在本机测试时（即与自身聊天）仍然有很小的概率会无法启动语音；
+
+
+
