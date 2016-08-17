@@ -5,11 +5,14 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
+import ext.BaoUtils;
+
 public class NetUtils {	
 	public static String getLocalHostAddress(){
 		try {
-			return InetAddress.getLocalHost().getHostAddress();
-		} catch (UnknownHostException e) {
+//			return InetAddress.getLocalHost().getHostAddress();//remove by bao
+			return BaoUtils.getLocalHost().getHostAddress();//add by bao
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";
@@ -17,8 +20,9 @@ public class NetUtils {
 	
 	public static String getLocalHostName(){
 		try {
-			return InetAddress.getLocalHost().getHostName();
-		} catch (UnknownHostException e) {
+//			return InetAddress.getLocalHost().getHostName();//remove by bao
+			return BaoUtils.getLocalHost().getHostName();//add by bao
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";
@@ -31,7 +35,10 @@ public class NetUtils {
 		String mac = "";
 		StringBuffer sb = new StringBuffer();
 		try {
-			NetworkInterface ni = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());
+			System.out.println("InetAddress.getLocalHost(): "+InetAddress.getLocalHost());
+			System.out.println("BaoUtils.getLocalHost(): "+BaoUtils.getLocalHost());
+//			NetworkInterface ni = NetworkInterface.getByInetAddress(InetAddress.getLocalHost());//remove by bao
+			NetworkInterface ni = NetworkInterface.getByInetAddress(BaoUtils.getLocalHost());//add by bao
 			byte[] macs = ni.getHardwareAddress(); //硬件地址的字节数组
 			//下面循环将字节数组每一个元素（byte表示的数字）转换为该数值的16进制表示
 			for (int i = 0; i < macs.length; i++) {
